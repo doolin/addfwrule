@@ -1,4 +1,14 @@
 addfwrule
 =========
+There comes a time when you need to add a rule to all your firewall policies.
+If you have many firewall policies, this is very tedious to do!  I wrote
+this script to do this automatically using the CloudPassage API.  It's
+a bit simple, but it suited my needs.  You can probably adapt it to
+whatever your particular needs are pretty easily by editing the json.
 
-Add Firewall Rule
+Note:  As is, this works only for linux firewalls.  To make it work with
+windows firewalls, you will need to get rid of the "position" entry at a
+minimum.
+
+Have fun!
+

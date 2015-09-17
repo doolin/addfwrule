@@ -39,4 +39,6 @@ your particular needs are pretty easily by editing the json.
 1. In the "rule=" definition in the script, configure the firewall rule as you wish.
 1. Execute the script.
 
-
+<!---
+#CPTAGS:community-unsupported automation integration
+-->

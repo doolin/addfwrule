@@ -33,7 +33,7 @@ client = OAuth2::Client.new(clientid, clientsecret,
 token = client.client_credentials.get_token.token
 
 # get list of fw policy IDs
-result = RestClient.get "https://#{host}/api/1/firewall_policies", {
+result = RestClient.get "https://#{host}/v1/firewall_policies", {
         'Authorization' => "Bearer #{token}"
 }
 policyids = []
@@ -45,7 +45,7 @@ end
 
 # get the fw zone we want
 zoneid = ''
-result = RestClient.get "https://#{host}/api/1/firewall_zones", {
+result = RestClient.get "https://#{host}/v1/firewall_zones", {
         'Authorization' => "Bearer #{token}"
 }
 data = JSON result.body
@@ -82,7 +82,7 @@ rule = '{
 
 # loop through policy ids, putting the rule in
 policyids.each do |fwid|
-	result = RestClient.post "https://#{host}/api/1/firewall_policies/#{fwid}/firewall_rules", rule, {
+	result = RestClient.post "https://#{host}/v1/firewall_policies/#{fwid}/firewall_rules", rule, {
 		'Authorization' => "Bearer #{token}",
 		'Content-Type' =>'application/json'
 	}

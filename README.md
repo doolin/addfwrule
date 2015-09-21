@@ -41,4 +41,5 @@ your particular needs are pretty easily by editing the json.
 
 <!---
 #CPTAGS:community-unsupported automation integration
+#TBICON:images/ruby_icon.png
 -->

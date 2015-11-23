@@ -8,6 +8,7 @@
 # API ID and key created via Halo portal:
 # https://portal.cloudpassage.com/settings/users (API tab)
 # Read id and key from environment for convenience
+# TODO: change this to use the AccountManager from scan_all_servers
 clientid = ENV['HALO_ID']
 clientsecret = ENV['HALO_SECRET_KEY']
 

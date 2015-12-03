@@ -38,8 +38,20 @@ class AccountManager
     @api_keys ||= load_accounts
   end
 
+  # todo: check the hash structure against what's loaded from config file
+  def load_from_environment
+    raise "[ERROR] loading api_keys: #{e}" and exit if ENV['HALO_ID'].nil? && ENV['HALO_SECRET_KEY'].nil?
+    {
+      'halo' => {
+        'key_id' => ENV['HALO_ID'],
+        'secret_key' => ENV['HALO_SECRET_KEY'],
+        'grid' => ENV['HALO_GRID']
+      }
+    }
+  end
+
   def load_accounts
-    YAML.load_file(@config_file)
+    @config_file.nil? ? load_from_environment : YAML.load_file(@config_file)
   rescue => e
     raise "[ERROR] loading api_keys: #{e}" and exit
   end

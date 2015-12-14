@@ -9,9 +9,6 @@ describe AccountManager do
       ENV['HALO_API_KEY_FILE'] = nil
     end
 
-    xit "checks for keys after checking for config file" do
-    end
-
     it "uses existing API keys" do
       fake_account = {
         'halo' => {

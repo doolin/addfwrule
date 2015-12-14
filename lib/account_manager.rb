@@ -26,6 +26,9 @@ require 'yaml'
 # in your ~/.bash_profile Should look something like
 # HALO_API_KEY_FILE="/home/ehoffmann/.halo"
 # export HALO_API_KEY_FILE
+#
+# Alternatively, set the environment variables for
+# HALO_ID and HALO_SECRET_KEY.
 
 class AccountManager
   attr_reader :api_keys

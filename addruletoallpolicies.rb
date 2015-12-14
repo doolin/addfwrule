@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require './lib/account_manager'
+
 # Add a firewall rule to position 1 of every firewall policy we have
 # Somewhat hardcoded at the moment, and it only works on Linux firewalls.
 # You should be able to fix this by changing the json a bit (take out
@@ -8,9 +10,13 @@
 # API ID and key created via Halo portal:
 # https://portal.cloudpassage.com/settings/users (API tab)
 # Read id and key from environment for convenience
-# TODO: change this to use the AccountManager from scan_all_servers
-clientid = ENV['HALO_ID']
-clientsecret = ENV['HALO_SECRET_KEY']
+#
+# clientid = ENV['HALO_ID']
+# clientsecret = ENV['HALO_SECRET_KEY']
+
+api_keys = AccountManager.new.api_keys['halo']
+clientid = api_keys['key_id']
+clientsecret = api_keys['secret_key']
 
 host = 'api.cloudpassage.com'
 zonename = 'static bastion hosts'
@@ -33,6 +39,8 @@ result = RestClient.get(
   "https://#{host}/v1/firewall_policies",
   'Authorization' => "Bearer #{token}"
 )
+
+puts result
 
 policyids = []
 data = JSON result.body
